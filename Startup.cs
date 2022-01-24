@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace WebAPIAutores
 
 {
@@ -16,6 +18,11 @@ namespace WebAPIAutores
         {
 
             services.AddControllers();
+
+            services.AddDbContext<ApplicationDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+
+
 
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
