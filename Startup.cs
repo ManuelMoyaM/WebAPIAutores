@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebAPIAutores
@@ -17,7 +18,8 @@ namespace WebAPIAutores
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            //Metodo que nos perimite ignorar los ciclos infinitos al momento de llamar a una clase que instancia a otra clase
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             services.AddDbContext<ApplicationDbContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));

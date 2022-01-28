@@ -12,6 +12,7 @@ public class ApplicationDbContext : DbContext
 
     //Esta linea de codigo se crea para que se cree una tabla en sql server con las propiedades de la clase autor
     public DbSet<Autor> Autores  {get; set;}
+    public DbSet<Libro> Libros   {get; set;}
     
 }
  
