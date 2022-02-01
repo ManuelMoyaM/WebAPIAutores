@@ -10,7 +10,7 @@ public class Autor: IValidatableObject //Para poder hacer las validaciones por m
     public int Id {get; set;}
     //Obliga a que el campo sea requerido. En este caso el nombre 
     [Required(ErrorMessage = "El campo {0} es requerido")]
-    [StringLength(maximumLength:5, ErrorMessage ="El campo {0} no debe tener mas de {1} caracteres")]
+    [StringLength(maximumLength: 120, ErrorMessage ="El campo {0} no debe tener mas de {1} caracteres")]
     ///[PrimeraLetraMayuscula] Se desactiva esta validacion por atributo para poder probar la validacion por modelo
     public string Nombre {get; set;}
   /*   [Range(18, 120)]
@@ -28,9 +28,9 @@ public class Autor: IValidatableObject //Para poder hacer las validaciones por m
     [NotMapped]
     public string URL {get; set;} */
 
-    public int Menor { get; set; }
+    /* public int Menor { get; set; }
     public int Mayor { get; set; }
-
+ */
     public List<Libro> Libros {get; set;}
 
     //Validacion por modelo
@@ -50,16 +50,12 @@ public class Autor: IValidatableObject //Para poder hacer las validaciones por m
             }
         }
 
-        if (Menor > Mayor)
+
+       /*  if (Menor > Mayor)
         {
             yield return new ValidationResult("Este valor no puede ser mayor al campo Mayor",
                                                 new string[] {nameof(Menor)});
             
-        }
-
-
-
-
-
+        } */
     }
 }

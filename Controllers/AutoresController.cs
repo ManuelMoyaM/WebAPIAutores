@@ -49,6 +49,14 @@ public class AutoresController: ControllerBase
 
     public async Task<ActionResult> Post(Autor autor)
     {
+        var existeAutorMismoNombre = await context.Autores.AnyAsync(x => x.Nombre == autor.Nombre);
+
+        if (existeAutorMismoNombre)
+        {
+            return BadRequest($"Ya existe un autor con el mismo nombre {autor.Nombre}");
+        }
+
+
         context.Add(autor);
         await context.SaveChangesAsync();
         return Ok();
