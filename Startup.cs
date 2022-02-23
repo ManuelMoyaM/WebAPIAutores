@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using WebAPIAutores.Controllers;
 
 namespace WebAPIAutores
 
@@ -9,7 +10,16 @@ namespace WebAPIAutores
     {
 
         public Startup(IConfiguration configuration)
+
         {
+
+            //INYECCION DE DEPENDENCIAS
+            //Instanciamos la clase AutoresController
+            //Para poder instanciar nuestro clase AutoresController debemos pasarle el dbContext.
+            var AutoresController = new AutoresController( 
+                new ApplicationDbContext(null),
+                    new ServicioB()
+                    );
             Configuration = configuration;
         }
 
