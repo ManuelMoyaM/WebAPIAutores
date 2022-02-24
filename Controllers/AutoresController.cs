@@ -12,6 +12,8 @@ namespace WebAPIAutores.Controllers;
 
 public class AutoresController: ControllerBase
 {
+
+    //Otra manera de instanciar una clase
     private readonly ApplicationDbContext context;
     private readonly IServicio servicio;
 
